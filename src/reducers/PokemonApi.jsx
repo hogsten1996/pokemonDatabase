@@ -12,7 +12,7 @@ export const pokemonApi = createApi({
         }),
         getPokemonAbilities: builder.query({
             query: ()=> 'ability'
-        })
+        }),
     }),
 })
 

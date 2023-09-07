@@ -1,32 +1,57 @@
-import { useGetPokemonQuery } from '../reducers/PokemonApi';
-import { Link } from 'react-router-dom';
+import { useGetPokemonQuery} from '../reducers/PokemonApi';
+import { Link as RouterLink } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Container from '@mui/material/Container';
+import '../index.css';
 
 const PokemonList = () => {
   const { data, error, isLoading } = useGetPokemonQuery();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <Container>
+        <CircularProgress />
+      </Container>
+    );
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <Container className="center-content">
+        <Typography className="center-text" variant="h6" color="error">
+          Error: {error.message}
+        </Typography>
+      </Container>
+    );
   }
 
   if (!data || !data.results) {
-    return <div>No data available</div>;
+    return (
+      <Container className="center-content">
+        <Typography className="center-text" variant="h6" color="textSecondary">
+          No data available
+        </Typography>
+      </Container>
+    );
   }
 
   return (
-    <div>
-      <h1>Pokémon List</h1>
-      <ul>
+    <Container className="center-content">
+      <Typography className='pokeList' variant="h4" gutterBottom>
+        Pokémon List
+      </Typography>
+      <List>
         {data.results.map((pokemon, index) => (
-          <li key={index}>
-            <Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
-          </li>
+          <ListItem className='listItem' key={index} component={RouterLink} to={`/pokemon/${pokemon.name}`}>
+            <ListItemText primary={pokemon.name} />
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+    </Container>
   );
 };
 
