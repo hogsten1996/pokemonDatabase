@@ -22,7 +22,7 @@ const PokemonList = () => {
   if (error) {
     return (
       <Container className="center-content">
-        <Typography className="center-text" variant="h6" color="error">
+        <Typography className="center-text" variant="h6">
           Error: {error.message}
         </Typography>
       </Container>
@@ -32,7 +32,7 @@ const PokemonList = () => {
   if (!data || !data.results) {
     return (
       <Container className="center-content">
-        <Typography className="center-text" variant="h6" color="textSecondary">
+        <Typography className="center-text" variant="h6">
           No data available
         </Typography>
       </Container>
@@ -41,7 +41,7 @@ const PokemonList = () => {
 
   return (
     <Container className="center-content">
-      <Typography className='pokeList' variant="h4" gutterBottom>
+      <Typography className='pokeList' variant="h4">
         Pokémon List
       </Typography>
       <List>

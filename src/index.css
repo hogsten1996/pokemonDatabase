@@ -19,7 +19,6 @@
 
 .listItem {
   color: white;
-  text-shadow: ;
 }
 
 .listItem:hover{
@@ -35,5 +34,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.image {
+  width:150px;
+  height:150px;
 }
 
